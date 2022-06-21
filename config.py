@@ -3,11 +3,13 @@ import re
 
 
 def save_media(url):
+    print(url)
     match = re.search(
         pattern=r'https\:\/\/.*\/([^\/\.]+).*?(jpg|jpeg|png|mp4)', string=url)
     try:
         res = requests.get(url=url)
         name = f'{match.group(1)}.{match.group(2)}'
+        print(name)
     except:
         pass
     else:

@@ -56,7 +56,7 @@ def thumbnail():
     if request.method == 'GET':
         return jsonify({'thumbnail': 'working...'})
     if request.method == 'POST':
-        links = request.json['links']
+        links = request.get_json()['links']
         thumbnails = get_links(links=links)
         que.put(thumbnails)
         return make_response(jsonify(thumbnails))
